@@ -22,6 +22,27 @@
       users = ['张三', '李四', '王五'],
       obj = { left: 100, top: 200 };
 
+    // 函数复用，拥有独立功能的一个模块，封装数组循环方法。也可以用React的标签化
+    // 标签化传参，利用属性传入的
+    function List(props) {
+      /* 接收来自标签上的所有属性 */
+      return props.data.map( (item, index) => {
+        return <li key={index}>{item}</li>
+      })
+    }
+
+    // 如果一个函数或者类作为一个组件去使用，名称首字母必须是大写
+    // 如果使用一个类实现组件，必须继承一个父类React.Component
+    // 组件类必须有一个render方法实现
+    // props: 传入的参数必须是对象下的一个属性props来接收
+    class CList extends React.Component {
+      render() {
+        return this.props.data.map( (item, index) => {
+          return <li key={index}>{item}</li>
+        })
+      }
+    }
+
     ReactDOM.render(
       // 'Hello React!', // 这里的内容不会作为html解析，是线文本输出，如果要渲染html，需要借助jsx
       // <h1>Hello React!</h1>,  // 只允许有一个顶级根节点，插值表达式类似vue，少了$符号，格式为{表达式}
@@ -42,6 +63,12 @@
             })
           }
         </ul>
+        <ul>
+          {List({data: users})}
+          <List data={users} a="1" />
+          <CList data={users} a="1" />
+        </ul>
+        CList
         <ul>
           {
             Object.keys(obj).map( key => {
