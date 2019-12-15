@@ -8,33 +8,22 @@ class App extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {
-      data: [
-        {
-          title: "空白格",
-          singer: "蔡健雅",
-          selected: false,
-          like: false
-        },
-        {
-          title: "空白格22",
-          singer: "蔡健雅22",
-          selected: false,
-          like: false
-        },
-        {
-          title: "空白格33",
-          singer: "蔡健雅33",
-          selected: false,
-          like: false
-        }
-      ]
+      /*
+      {
+        title: "空白格",
+        singer: "蔡健雅",
+        selected: false,
+        like: false
+      } 
+      */
+      data: []
     }
   }
   render() {
     return (
       <div id="musicApp">
         <Header />
-        <Main />
+        <Main data={this.state.data} />
         <Footer />
       </div>
     );

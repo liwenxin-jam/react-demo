@@ -2,15 +2,16 @@ import React from 'react';
 
 export default class Item extends React.Component {
   render() {
+    let data = this.props.data;
     return (
-      <tr className="selected">
+      <tr className={(data.selected ? "selected" : "") + (data.like ? " like" : "")}>
         <td>
-          <input type="checkbox" checked name="" />
+          <input type="checkbox" checked={data.selected} />
         </td>
-        <td>全世界失眠</td>
-        <td>陈奕迅</td>
+        <td>{data.title}</td>
+        <td>{data.singer}</td>
         <td>
-          <input type="checkbox" name="" />
+          <input type="checkbox" checked={data.like} />
         </td>
         <td>
           <a>X</a>
