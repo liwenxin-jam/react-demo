@@ -18,13 +18,37 @@
   <div id="app"></div>
 
   <script type="text/babel">
+    var a = 'xxlai',
+      users = ['张三', '李四', '王五'],
+      obj = { left: 100, top: 200 };
+
     ReactDOM.render(
       // 'Hello React!', // 这里的内容不会作为html解析，是线文本输出，如果要渲染html，需要借助jsx
       // <h1>Hello React!</h1>,  // 只允许有一个顶级根节点，插值表达式类似vue，少了$符号，格式为{表达式}
+      // 布尔值true/false 空null 未定义undefined 不显示节点内容，此外，不允许直接输出对象，数组对象是个例外
+      // JSX支持属性标签设置，值用字符串包裹，也可以接收插值表达式，但不支持语句(for,if)
+      // 注意 1.class用className代替 2.style 值必须使用对象
       <div>
-        <h1>Hello React!</h1>
-        <h1>Hello React!</h1>
-        <h1>{1 + 2}</h1>
+        <h1 id="a">Hello React!</h1>
+        <h1 id={a}>Hello React!</h1>
+        <h1 className="box">{1 + 2}</h1>  
+        <h1>{/* {left: 10} */}</h1>  
+        <h1 style={ {color: 'red'}}>{[1,2,3]/* 等价于arr.join('') */}</h1>
+        <ul>
+          {
+            /* 根据数组中的内容生成一个包含有结构的新数据，必须包含一个key属性，且值不允许重复 */
+            users.map( (user, index) => {
+              return <li key={index}>{user}</li>
+            })
+          }
+        </ul>
+        <ul>
+          {
+            Object.keys(obj).map( key => {
+              return <li key={key}>{key}-{obj[key]}</li>
+            })
+          }
+        </ul>
       </div>,
       // document.body // 不允许这样做，虽然可以有页面效果，但会有警告
       document.getElementById('app')
