@@ -12,7 +12,7 @@ class Add extends React.Component {
   getBack() {
     if(this.props.data.length > 0) {
       return (<a 
-        href="#" 
+        href="" 
         className="backLink"
         onClick={() => {
           this.props.history.goBack();

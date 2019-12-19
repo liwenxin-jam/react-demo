@@ -37,6 +37,7 @@ class Item extends React.Component {
         </td>
         <td>
           <a 
+            href=""
             onClick={() => {
             this.props.dispatch({
               type: 'REMOVE',
