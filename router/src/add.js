@@ -15,9 +15,11 @@ export default class Add extends React.Component {
         <h2 className="title">
           播放列表
           <a 
-            href="javascript:;" 
+            href="#" 
             className="backLink"
-            // onClick={}
+            onClick={() => {
+              this.props.router.history.goBack();
+            }}
           >返回</a>
         </h2>
         <input 
