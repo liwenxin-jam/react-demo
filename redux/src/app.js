@@ -8,8 +8,19 @@ class App extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div id="musicApp">
-      </div>
+      <BrowserRouter>
+        <div id="musicApp">
+          <Switch>
+            <Route path="/add" component={Add} />
+            <Route path="/" render={(e) => {
+              if(this.props.data.length === 0) {
+                return <Redirect to="/add" />
+              }
+              return (<Home router={e} />)
+            }} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
