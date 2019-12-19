@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link, BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Home from './home';
 import Add from './add';
 
@@ -141,6 +141,7 @@ class App extends React.Component {
     return true;
   }
   render() {
+    let data = this.state.data;
     return (
       <BrowserRouter>
         <div id="musicApp">
@@ -148,6 +149,7 @@ class App extends React.Component {
             <Route path="/add" render={(e) => {
               return (
                 <Add 
+                  length={data.length}
                   add={this.add} 
                   router={e}
                 />
@@ -155,10 +157,13 @@ class App extends React.Component {
             }} />
             <Route path="/" render={(e) => {
               // console.log(e);
+              if(data.length === 0) {
+                return <Redirect to="/add" />
+              }
               return (
                 <Home 
                   pathName={e.location.pathname}
-                  data={this.state.data} 
+                  data={data} 
                   isCheckAll={this.isCheckAll()} 
                   checkAll={this.setCheckAll}
                   setCheck={this.setCheck}

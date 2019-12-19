@@ -8,19 +8,24 @@ export default class Add extends React.Component {
       singer: ''
     }
   }
+  getBack() {
+    if(this.props.length > 0) {
+      return (<a 
+        href="#" 
+        className="backLink"
+        onClick={() => {
+          this.props.router.history.goBack();
+        }}
+      >返回</a>)
+    }
+  }
   render() {
     // console.log(this.props.router)
     return (
       <header>
         <h2 className="title">
           播放列表
-          <a 
-            href="#" 
-            className="backLink"
-            onClick={() => {
-              this.props.router.history.goBack();
-            }}
-          >返回</a>
+          {this.getBack()}
         </h2>
         <input 
           type="text" 
