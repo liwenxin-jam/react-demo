@@ -1,10 +1,18 @@
-import React, { Component } from 'react'
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <h3>App</h3>
-      </div>
-    )
-  }
+import React from "react";
+// import Button from "antd/es/button";
+// import "antd/dist/antd.css";
+
+import {Button} from "antd";
+import HomePage from "./pages/HomePage";
+
+function App() {
+  return (
+    <div className="App">
+      app
+      <Button type="primary">提交</Button>
+      <HomePage />
+    </div>
+  );
 }
+
+export default App;
