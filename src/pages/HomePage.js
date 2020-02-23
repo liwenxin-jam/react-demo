@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import "./HomePage.less";
+import React, { Component } from 'react'
+import './HomePage.less'
 
 export default class HomePage extends Component {
   render() {
@@ -7,6 +7,6 @@ export default class HomePage extends Component {
       <div className="homePage">
         <h3>HomePage</h3>
       </div>
-    );
+    )
   }
 }
