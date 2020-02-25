@@ -4,8 +4,8 @@ export default function kFormCreate(Cmp) {
   return class extends Component {
     constructor(props) {
       super(props)
-      this.state = {}
-      this.options = { errors: {} }
+      this.state = { errors: {} }
+      this.options = {}
     }
     handleChange = e => {
       // setState name value
@@ -22,7 +22,7 @@ export default function kFormCreate(Cmp) {
     getFieldDecorator = (field, option) => {
       this.options[field] = option
       return InputCmp => {
-        //克隆一份
+        // 克隆一份
         return (
           <div>
             {React.cloneElement(InputCmp, {
@@ -43,12 +43,11 @@ export default function kFormCreate(Cmp) {
     }
     validate = state => {
       const errors = {}
-      // const state = { ...this.state }
+      // const state = {...this.state};
       for (let name in this.options) {
         if (state[name] === undefined) {
           // 没有输入，判断为不合法
-          // errors[name] = 'error'
-          errors[name] = this.options[name].rules[0].message
+          errors[name] = this.options[name].rules[0].message //"error";
         }
       }
       this.setState({ ...state, errors })
