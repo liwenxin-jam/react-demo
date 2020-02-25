@@ -1,6 +1,7 @@
 import React from 'react'
 import ContextPage from './pages/ContextPage'
 import ReduxPage from './pages/ReduxPage'
+import CaculatorPage from './pages/CaculatorPage'
 
 // 有如下函数， 聚合成一个函数，并把第一个函数的返回值传递给下一个函数，如何处理。
 function f1(arg) {
@@ -42,7 +43,10 @@ function App() {
       {/* <ContextPage /> */}
 
       {/* Redux学习 */}
-      <ReduxPage />
+      {/* <ReduxPage /> */}
+
+      {/* 实现输入框的加减法，比如说输入10，加10，用上combineReducers。 */}
+      <CaculatorPage />
     </div>
   )
 }
