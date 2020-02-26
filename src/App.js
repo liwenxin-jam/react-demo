@@ -1,54 +1,13 @@
-import React from 'react'
-import ContextPage from './pages/ContextPage'
-import ReduxPage from './pages/ReduxPage'
-import CaculatorPage from './pages/CaculatorPage'
-
-// 有如下函数， 聚合成一个函数，并把第一个函数的返回值传递给下一个函数，如何处理。
-function f1(arg) {
-  console.log('f1', arg)
-  return arg
-}
-function f2(arg) {
-  console.log('f2', arg)
-  return arg
-}
-function f3(arg) {
-  console.log('f3', arg)
-  return arg
-}
-
-// let res = f1(f2(f3("omg")));
-// console.log("res", res);
-
-// let res = compose(f1, f2, f3)("omg");
-// let res = compose()("omg");
-
-// console.log("res", res);
-
-// function compose(...funcs) {
-//   if (funcs.length === 0) {
-//     // return arg => arg;
-//     return () => {};
-//   }
-//   if (funcs.length === 1) {
-//     return funcs[0];
-//   }
-//   return funcs.reduce((a, b) => (...args) => a(b(...args)));
-// }
+import React from "react";
+import ReactReduxPage from "./pages/ReactReduxPage";
 
 function App() {
   return (
     <div className="App">
-      {/* context 上下文 */}
-      {/* <ContextPage /> */}
-
-      {/* Redux学习 */}
-      {/* <ReduxPage /> */}
-
-      {/* 实现输入框的加减法，比如说输入10，加10，用上combineReducers。 */}
-      <CaculatorPage />
+      {/* 学习react redux */}
+      <ReactReduxPage />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
