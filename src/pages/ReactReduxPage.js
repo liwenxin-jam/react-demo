@@ -13,9 +13,12 @@ export default connect(
   // }
   dispatch => {
     let res = {
+      // add: () => dispatch({ type: 'ADD' }),
+      // minus: () => dispatch({ type: 'MINUS' })
       add: () => ({ type: 'ADD' }),
       minus: () => ({ type: 'MINUS' })
     }
+    // bindActionCreators等价于上面单独给每个actiondispatch触发
     res = bindActionCreators(res, dispatch)
     return {
       dispatch,
