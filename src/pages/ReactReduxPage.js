@@ -30,9 +30,13 @@ export default connect(
   (dispatch, ownProps) => {
     console.log('ownProps', ownProps) //sy-log
     let res = {
+      // 为每个action单独dispatch等价于后面的bindActionCreators操作
+      // add: () => dispatch({ type: 'ADD' }),
+      // minus: () => dispatch({ type: 'MINUS' })
       add: () => ({ type: 'ADD' }),
       minus: () => ({ type: 'MINUS' })
     }
+    // 默认直接展开res是不会触发dispatch操作，需要多封装一下bindActionCreators
     res = bindActionCreators(res, dispatch)
     return {
       dispatch,

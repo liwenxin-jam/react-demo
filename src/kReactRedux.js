@@ -63,13 +63,16 @@ export class Provider extends Component {
   }
 }
 
+// 利用传进来的dispatch封装一下，帮忙触发执行
 function bindActionCreator(creator, dispatch) {
+  // args是假设creator有参数，如{type: "ADD"}，重新帮忙传参
   return (...args) => dispatch(creator(...args))
 }
 
 // {
 //     add: () => ({type: "ADD"})
 //   }
+// creators相当于上边的对象
 export function bindActionCreators(creators, dispatch) {
   const obj = {}
   for (const key in creators) {
