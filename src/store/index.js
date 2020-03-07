@@ -16,7 +16,7 @@ function countReducer(state = 0, action) {
 }
 
 // const store = createStore(countReducer, applyMiddleware(thunk, logger))
-// combineReducers 方式
+// combineReducers 方式，会把getState转成一个对象，默认就是一个值
 const store = createStore(
   combineReducers({
     count: countReducer
@@ -25,7 +25,9 @@ const store = createStore(
 
 export default store
 
+// middlewares中间件通过middleApi封装的，所以它有getState, dispatch方法
 function logger({ getState, dispatch }) {
+  // action是外部传进来的参数，如{type: 'ADD'}
   return dispatch => action => {
     console.log(action.type + '执行了') //sy-log
     return dispatch(action)

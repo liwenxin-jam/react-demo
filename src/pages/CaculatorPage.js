@@ -42,6 +42,7 @@ export default kFormCreate(
       return (
         <div>
           <h3>CaculatorPage</h3>
+          {/* 注意:combineReducers后会把getState转成一个对象 */}
           <p>{store.getState().count}</p>
           {getFieldDecorator('num', { rules: [numRules] })(
             <input type="text" />

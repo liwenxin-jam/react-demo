@@ -30,6 +30,7 @@ export function createStore(reducer, enhancer) {
 }
 
 export function applyMiddleware(...middlewares) {
+  // 这里的createStore相当于传入的thunk, logger库， ...args是它们的参数
   return createStore => (...args) => {
     const store = createStore(...args)
     let dispatch = store.dispatch
@@ -39,8 +40,10 @@ export function applyMiddleware(...middlewares) {
     }
     // 给middleware参数，比如说dispatch
     const middlewaresChain = middlewares.map(middleware =>
+      // 给每个传入的例如thunk, logger库封装一下，多传递参数 { getState: store.getState, dispatch }
       middleware(middleApi)
     )
+    // reduce下执行dispatch，把加强后的dispatch返回
     dispatch = compose(...middlewaresChain)(dispatch)
     return {
       ...store,
