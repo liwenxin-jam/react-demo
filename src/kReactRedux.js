@@ -8,7 +8,7 @@ export const connect = (
   mapDispatchToProps
 ) => WrappedComponent => {
   return class extends Component {
-    // 此时组件的所有生命周期都能获得this.context
+    // 此时组件的所有生命周期都能获得this.context，contextType是规范，不能换其它名称
     static contextType = ValueContext
     constructor(props) {
       super(props)
