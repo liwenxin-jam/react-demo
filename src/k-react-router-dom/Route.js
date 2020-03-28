@@ -29,19 +29,24 @@ export default class Route extends Component {
           // match的时候如果children存在：function或者children本身
           // 不match children 或者 null
           // children是和匹配无关的
-          return match
-            ? children
-              ? typeof children === "function"
+          return (
+            <RouterContext.Provider value={props}>
+              {match
+                ? children
+                  ? typeof children === "function"
+                    ? children(props)
+                    : children
+                  : component
+                  ? // ? React.cloneElement(element, props)
+                    React.createElement(component, props)
+                  : render
+                  ? render(props)
+                  : null
+                : typeof children === "function"
                 ? children(props)
-                : children
-              : component
-              ? React.createElement(component, props)
-              : render
-              ? render(props)
-              : null
-            : typeof children === "function"
-            ? children(props)
-            : null;
+                : null}
+            </RouterContext.Provider>
+          );
         }}
       </RouterContext.Consumer>
     );
