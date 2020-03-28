@@ -12,11 +12,7 @@ import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./pages/PrivateRoute";
 import ModalSwitch from "./pages/ModalSwitch";
 
-// 课下写一下404的补录视频
-// 掌握React.Children
-// 掌握createElement与cloneElement
-
-// Switch location使用
+// Switch location使用，可以看ModalSwitch.js
 // Route的组件为什么又包一层Provider
 
 function App() {

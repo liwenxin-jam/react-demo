@@ -32,6 +32,7 @@ export default class BrowserRouter extends Component {
         value={{
           history: this.history,
           location: this.state.location,
+          // 浏览器匹配的match，传递给route做404匹配
           match: BrowserRouter.computeRootMatch(this.state.location.pathname)
         }}>
         {this.props.children}

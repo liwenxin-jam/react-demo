@@ -26,6 +26,7 @@ export default class Switch extends Component {
           //       : context.match;
           //   }
           // }
+          // 掌握React.Children用法，也可以使用自己的方式，自己循环
           React.Children.forEach(children, child => {
             if (match === null && React.isValidElement(child)) {
               element = child;
@@ -39,6 +40,7 @@ export default class Switch extends Component {
             }
           });
           // console.log("element", element, React.isValidElement(element)); //sy-log
+          // 掌握createElement与cloneElement的区别，以下两种方式都可以成功渲染
           // createElement(type, props)
           // return match
           //   ? React.createElement(element.type, {
