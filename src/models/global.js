@@ -1,5 +1,4 @@
 import { queryNotices } from '@/services/user';
-
 const GlobalModel = {
   namespace: 'global',
   state: {

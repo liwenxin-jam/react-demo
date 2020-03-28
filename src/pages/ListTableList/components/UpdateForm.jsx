@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Form, Button, DatePicker, Input, Modal, Radio, Select, Steps } from 'antd';
-
 const FormItem = Form.Item;
 const { Step } = Steps;
 const { TextArea } = Input;
@@ -210,7 +209,8 @@ const UpdateForm = props => {
       title="规则配置"
       visible={updateModalVisible}
       footer={renderFooter()}
-      onCancel={() => handleUpdateModalVisible()}
+      onCancel={() => handleUpdateModalVisible(false, values)}
+      afterClose={() => handleUpdateModalVisible()}
     >
       <Steps
         style={{

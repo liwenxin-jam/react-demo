@@ -5,7 +5,6 @@ import { getFakeCaptcha } from '@/services/login';
 import ItemMap from './map';
 import LoginContext from './LoginContext';
 import styles from './index.less';
-
 const FormItem = Form.Item;
 
 const getFormItemOptions = ({ onChange, defaultValue, customProps = {}, rules }) => {
@@ -83,7 +82,7 @@ const LoginItem = props => {
   if (type === 'Captcha') {
     const inputProps = omit(otherProps, ['onGetCaptcha', 'countDown']);
     return (
-      <FormItem shouldUpdate noStyle>
+      <FormItem shouldUpdate>
         {({ getFieldValue }) => (
           <Row gutter={8}>
             <Col span={16}>

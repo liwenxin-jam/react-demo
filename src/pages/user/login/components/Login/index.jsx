@@ -11,7 +11,7 @@ import styles from './index.less';
 const Login = props => {
   const { className } = props;
   const [tabs, setTabs] = useState([]);
-  const [active, setActive] = useState({});
+  const [active, setActive] = useState();
   const [type, setType] = useMergeValue('', {
     value: props.activeKey,
     onChange: props.onTabChange,
@@ -41,8 +41,6 @@ const Login = props => {
           },
         },
         updateActive: activeItem => {
-          if (!active) return;
-
           if (active[type]) {
             active[type].push(activeItem);
           } else {

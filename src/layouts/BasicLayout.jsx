@@ -4,15 +4,16 @@
  * https://github.com/ant-design/ant-design-pro-layout
  */
 import ProLayout, { DefaultFooter } from '@ant-design/pro-layout';
+import { formatMessage } from 'umi-plugin-react/locale';
 import React, { useEffect } from 'react';
-import { Link, useIntl, connect } from 'umi';
+import { Link } from 'umi';
+import { connect } from 'dva';
 import { GithubOutlined } from '@ant-design/icons';
 import { Result, Button } from 'antd';
 import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
-import { getAuthorityFromRouter } from '@/utils/utils';
+import { isAntDesignPro, getAuthorityFromRouter } from '@/utils/utils';
 import logo from '../assets/logo.svg';
-
 const noMatch = (
   <Result
     status={403}
@@ -61,6 +62,32 @@ const defaultFooterDom = (
   />
 );
 
+const footerRender = () => {
+  if (!isAntDesignPro()) {
+    return defaultFooterDom;
+  }
+
+  return (
+    <>
+      {defaultFooterDom}
+      <div
+        style={{
+          padding: '0px 24px 24px',
+          textAlign: 'center',
+        }}
+      >
+        <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"
+            width="82px"
+            alt="netlify logo"
+          />
+        </a>
+      </div>
+    </>
+  );
+};
+
 const BasicLayout = props => {
   const {
     dispatch,
@@ -97,7 +124,6 @@ const BasicLayout = props => {
   const authorized = getAuthorityFromRouter(props.route.routes, location.pathname || '/') || {
     authority: undefined,
   };
-  const { formatMessage } = useIntl();
   return (
     <ProLayout
       logo={logo}
@@ -119,9 +145,7 @@ const BasicLayout = props => {
       breadcrumbRender={(routers = []) => [
         {
           path: '/',
-          breadcrumbName: formatMessage({
-            id: 'menu.home',
-          }),
+          breadcrumbName: '首页',
         },
         ...routers,
       ]}
@@ -133,7 +157,7 @@ const BasicLayout = props => {
           <span>{route.breadcrumbName}</span>
         );
       }}
-      footerRender={() => defaultFooterDom}
+      footerRender={footerRender}
       menuDataRender={menuDataRender}
       rightContentRender={() => <RightContent />}
       {...props}
