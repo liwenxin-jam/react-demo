@@ -11,11 +11,22 @@ export default class Route extends Component {
     return (
       <RouterContext.Consumer>
         {context => {
-          const { path, children, component, render } = this.props;
+          const {
+            path,
+            computedMatch,
+            children,
+            component,
+            render
+          } = this.props;
           // const match = context.location.pathname === path;
           const location = this.props.location || context.location;
-          const match = matchPath(location.pathname, this.props);
+          const match = computedMatch
+            ? computedMatch
+            : path
+            ? matchPath(location.pathname, this.props)
+            : context.match;
           console.log("match", match);
+          console.log("context.match", context.match);
           const props = {
             ...context,
             location,
