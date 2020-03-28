@@ -13,7 +13,7 @@ import PrivateRoute from "./pages/PrivateRoute";
 import ModalSwitch from "./pages/ModalSwitch";
 
 // Switch location使用，可以看ModalSwitch.js
-// Route的组件为什么又包一层Provider
+// Route的组件为什么又包一层Provider，为了方便hooks，详细查阅hooks.js和SearchComponent函数组件
 
 function App() {
   return (
