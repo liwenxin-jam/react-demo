@@ -33,7 +33,7 @@ const routes = [
 export default function Routes(props) {
   return (
     <Router>
-      {/* 能获取到history location match吗，来自context */}
+      {/* 能获取到history location match吗，来自context，不能 */}
       {/* <BottomNav /> */}
       <Route routes={routes} component={TopBar} />
       <Route component={BottomNav} />
