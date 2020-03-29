@@ -48,6 +48,7 @@ const jsx = (
 
 // element， container
 // vnode->node , 把node渲染更新到container
+// babel编译后会内部会递归调用createElement，第一个参数 ReactElement = React.createElement(jsx)
 ReactDOM.render(jsx, document.getElementById("root"));
 
 // !节点类型

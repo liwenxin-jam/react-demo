@@ -14,6 +14,7 @@ function createElement(type, props, ...children) {
     props: {
       ...props,
       //!这里的处理与源码稍有不同，源里的话，只有一个元素，children是对象，多于一个的时候，是数组
+      // babel编译后会内部会递归调用createElement，所以能找到嵌套的children元素
       children: children.map(child =>
         typeof child === "object" ? child : createTextNode(child)
       )
